@@ -6,7 +6,7 @@ var userData = new Buffer("#!/bin/bash;sudo yum update -y;");
 var params = {
 	InstanceCount: 1,
 	LaunchSpecification: {
-		ImageId: 'ami-3efe3251',
+		ImageId: 'ami-4ff83420',
 		InstanceType: 'm3.medium',
 		KeyName: 'Minecraft',
 		SecurityGroups: ['sgMinecraft'],
