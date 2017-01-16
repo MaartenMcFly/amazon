@@ -1,5 +1,6 @@
 var AWS = require('aws-sdk');
-AWS.config.loadFromPath('./minecraft-config.json');
+AWS.config.update({region: process.env.REGION});
+//AWS.config.loadFromPath('./minecraft-config.json');
 var ec2 = new AWS.EC2();
 
 var params = {
@@ -18,10 +19,10 @@ ec2.describeInstances(params, function(err, data) {
 		}
 	}
 	ec2.terminateInstances(params, function(err, data) {
-		if (err) 
+		if (err)
 			console.log(err, err.stack);
 		else
 			console.log(data);
 	});
-				
+
 });

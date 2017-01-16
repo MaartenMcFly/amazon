@@ -1,16 +1,17 @@
 var AWS = require('aws-sdk');
-AWS.config.loadFromPath('./minecraft-config.json');
+AWS.config.update({region: process.env.REGION});
+//AWS.config.loadFromPath('./minecraft-config.json');
 var ec2 = new AWS.EC2();
-var userData = new Buffer("#!/bin/bash;sudo yum update -y;");
+//var userData = new Buffer("#!/bin/bash;sudo yum update -y;");
 
 var params = {
 	InstanceCount: 1,
 	LaunchSpecification: {
-		ImageId: 'ami-4ff83420',
+		ImageId: 'ami-43fb372c',
 		InstanceType: 'm3.medium',
 		KeyName: 'Minecraft',
-		SecurityGroups: ['sgMinecraft'],
-		UserData: userData.toString('base64')
+		SecurityGroups: ['sgMinecraft']
+		//,UserData: userData.toString('base64')
 	},
 	SpotPrice: "0.050",
 	Type: "one-time"
